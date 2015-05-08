@@ -1,7 +1,7 @@
 require_relative '../view/view.rb'
 require_relative '../models/deck.rb'
 require_relative '../models/card.rb'
-
+require_relative '../modules/parser.rb'
 class GameController
   attr_reader :deck
   def initialize
