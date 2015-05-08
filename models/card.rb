@@ -1,7 +1,7 @@
 class Card
   attr_reader :question, :answer
   attr_accessor :answer_state
-  def intialize(args={})
+  def initialize(args = {})
     @question = args[:question]
     @answer = args[:answer]
     @answer_state = args.fetch(:answered) { false }
