@@ -22,4 +22,8 @@ module View
     puts 'incorrect! guess again :)'
   end
 
+  def deck_not_available
+    puts 'That option is not valid setting to default deck.'
+  end
+
 end
