@@ -22,8 +22,10 @@ module View
     puts 'incorrect! guess again :)'
   end
 
-  def deck_not_available
+  def self.deck_not_available
     puts 'That option is not valid setting to default deck.'
   end
-
+  def self.choose
+    puts 'please enter 1 for Ruby trivia or 2 for animal trivia'
+  end
 end

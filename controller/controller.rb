@@ -21,7 +21,7 @@ class GameController
   end
 
   def run
-
+    View.choose
     input = View.input
     case input
     when '1'
