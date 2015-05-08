@@ -1,0 +1,34 @@
+require_relative '../view/view.rb'
+require_relative '../models/deck.rb'
+require_relative '../models/card.rb'
+
+class GameController
+  attr_reader :deck
+  def initialize
+    @deck = Deck.new(cards: Parser.parse_text_file('flashcard_samples.txt'))
+  end
+
+  def start
+    View.welcome
+    run
+  end
+
+  def run
+    input = ""
+    until input == 'quit' || deck.all_answered?
+      card = deck.pick_card(deck.show_unanswered)
+      View.display(deck.show_question(card))
+      input = View.input
+      if correct_answer?(card, input)
+        View.correct
+        answered!(card)
+      else
+        View.incorrect
+      end
+      View.display(deck.show_answer(card))
+    end
+  end
+end
+
+game = GameController.new
+game.start
