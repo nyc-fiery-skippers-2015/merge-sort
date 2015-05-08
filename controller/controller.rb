@@ -28,6 +28,8 @@ class GameController
       if deck.correct_answer?(card, input)
         View.correct
         deck.answered!(card)
+      elsif input == 'quit'
+        exit
       else
         View.incorrect
       end
