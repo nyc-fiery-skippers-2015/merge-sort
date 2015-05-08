@@ -2,10 +2,13 @@ require_relative '../view/view.rb'
 require_relative '../models/deck.rb'
 require_relative '../models/card.rb'
 require_relative '../modules/parser.rb'
+
+require 'pry'
 class GameController
   attr_reader :deck
   def initialize
-    @deck = Deck.new(cards: Parser.parse_text_file('flashcard_samples.txt'))
+    # binding.pry
+    @deck = Deck.new(Parser.parse_text_file('flashcard_samples.txt'))
   end
 
   def start
@@ -16,12 +19,15 @@ class GameController
   def run
     input = ""
     until input == 'quit' || deck.all_answered?
+
       card = deck.pick_card(deck.show_unanswered)
+
       View.display(deck.show_question(card))
       input = View.input
-      if correct_answer?(card, input)
+
+      if deck.correct_answer?(card, input)
         View.correct
-        answered!(card)
+        deck.answered!(card)
       else
         View.incorrect
       end

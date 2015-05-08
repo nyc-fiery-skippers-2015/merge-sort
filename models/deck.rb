@@ -1,8 +1,8 @@
 class Deck
   attr_reader :cards
   attr_accessor :current_card
-  def initialize(args = {})
-    @cards = args[:cards]
+  def initialize(cards)
+    @cards = cards
     @current_card = nil
   end
 
