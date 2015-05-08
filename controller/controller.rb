@@ -19,12 +19,9 @@ class GameController
   def run
     input = ""
     until input == 'quit' || deck.all_answered?
-
       card = deck.pick_card(deck.show_unanswered)
-
       View.display(deck.show_question(card))
       input = View.input
-
       if deck.correct_answer?(card, input)
         View.correct
         deck.answered!(card)
